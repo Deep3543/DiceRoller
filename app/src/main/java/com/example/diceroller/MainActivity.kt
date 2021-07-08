@@ -2,6 +2,7 @@ package com.example.diceroller
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -18,11 +19,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun rollDice() {
-        TODO("Not yet implemented")
+        // create dice object with 6 sides
+        val dice = Dice(6)
+        // roll the dice to generate random number
+        val diceRoll = dice.roll()
+        // fetch textView by Id to resultTextView
+        val resultTextView: TextView = findViewById(R.id.textView2)
+        // assign value of the text of the textView to rolled number by converting it
+        // to string using toString
+        resultTextView.text = diceRoll.toString()
     }
 
     // Dice class to implement Rolling Dice logic
-    class Dice(val numSides:Int){
+    class Dice(private val numSides:Int){
         fun roll(): Int {
             return (1..numSides).random()
         }
